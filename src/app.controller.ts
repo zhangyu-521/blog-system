@@ -3,6 +3,7 @@ import { Controller, Get } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from './prisma/prisma.service';
 import { AppService } from './app.service';
+import { Public } from './modules/auth/decorators/public.decorator';
 
 @Controller()
 export class AppController {
@@ -12,11 +13,13 @@ export class AppController {
     private readonly prismaService: PrismaService,
   ) {}
 
+  @Public()
   @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
+  @Public()
   @Get('health')
   async getHealth() {
     const dbHealthy = await this.prismaService.isHealthy();
@@ -25,15 +28,6 @@ export class AppController {
       timestamp: new Date().toISOString(),
       database: dbHealthy ? 'connected' : 'disconnected',
       environment: this.configService.get('app.environment'),
-    };
-  }
-
-  @Get('config')
-  getConfig() {
-    return {
-      app: this.configService.get('app'),
-      environment: this.configService.get('app.environment'),
-      port: this.configService.get('app.port'),
     };
   }
 }

@@ -4,7 +4,6 @@ import {
   ConflictException,
   NotFoundException,
   BadRequestException,
-  ForbiddenException,
 } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -109,7 +108,7 @@ export class UsersService {
       this.prisma.user.findMany({
         where,
         skip,
-        take: limit,
+        take: Number(limit),
         orderBy,
       }),
       this.prisma.user.count({ where }),

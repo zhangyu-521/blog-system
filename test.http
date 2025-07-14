@@ -1,0 +1,87 @@
+# curl -X POST http://localhost:3000/users \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "email": "test@example.com",
+#     "username": "testuser",
+#     "password": "Password123!",
+#     "firstName": "Test",
+#     "lastName": "User"
+#   }'
+
+
+# curl -X GET "http://localhost:3000/users?page=1&limit=10"
+
+
+# curl -X GET http://localhost:3000/users/cmcwrj8fq00007tr0i4a9lhqf
+
+
+# curl -X PATCH http://localhost:3000/users/cmcwrj8fq00007tr0i4a9lhqf \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "firstName": "Updated",
+#     "bio": "Updated bio"
+#   }'
+
+
+  # 测试无效邮箱
+# curl -X POST http://localhost:3000/users \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "email": "invalid-email",
+#     "username": "test",
+#     "password": "weak"
+#   }'
+
+
+# curl -X POST http://localhost:3000/auth/register \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "email": "test2@example.com",
+#     "username": "testuser2",
+#     "password": "Password123!",
+#     "firstName": "Test",
+#     "lastName": "User"
+#   }'
+
+
+# curl -X POST http://localhost:3000/auth/login \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "email": "admin@example.com",
+#     "password": "admin123456"
+#   }'
+
+
+
+# # 替换 YOUR_ACCESS_TOKEN 为实际的访问令牌
+# curl -X GET http://localhost:3000/auth/profile \
+#   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWN4NGppazIwMDAwN3R5b2VyZHhvaTJ0IiwiZW1haWwiOiJ0ZXN0MkBleGFtcGxlLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMTM2MDkxLCJleHAiOjE3NTIyMjI0OTF9.etmeLXHGL24soQcpmwS8djeMS8jyXyS19M70y2B4da0"
+
+
+
+# curl -X POST http://localhost:3000/auth/refresh \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWN4NGppazIwMDAwN3R5b2VyZHhvaTJ0IiwiZW1haWwiOiJ0ZXN0MkBleGFtcGxlLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMTM2MDkxLCJleHAiOjE3NTIyMjI0OTF9.etmeLXHGL24soQcpmwS8djeMS8jyXyS19M70y2B4da0"
+#   }'
+
+
+# curl -X POST http://localhost:3000/auth/forgot-password \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "email": "test@example.com"
+#   }'
+
+
+# curl -X POST http://localhost:3000/auth/reset-password \
+#   -H "Content-Type: application/json" \
+#   -d '{
+#     "token":"c175ff1411b10f8841f35cc1d6953b5756021e74caaf39fc44a6a4f5e073a9d7",
+#     "newPassword": "NewPassword123!"
+#   }'
+
+
+
+
+curl -X GET http://localhost:3000/users \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cI6IkpXVCJ9.eyJzdWIiOiJjbWN2bmdxYTEwMDAwN3Qyc2RxcWozbzZsIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjEzNzQwNywiZXhwIjoxNzUyMjIzODA3fQ.3gL-csfgHIHAjwBsZluc63U5zRMPNPKN2KgNCr3MgeM"
