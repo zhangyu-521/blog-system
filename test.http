@@ -1,3 +1,5 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWN2bmdxYTEwMDAwN3Qyc2RxcWozbzZsIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjU1OTI4NiwiZXhwIjoxNzUyNjQ1Njg2fQ.08Ni5cebjYkLOZh95k2IvP0LKzryJB0QOFv9NEskZ_c
+
 # curl -X POST http://localhost:3000/users \
 #   -H "Content-Type: application/json" \
 #   -d '{
@@ -53,9 +55,8 @@
 
 
 
-# # 替换 YOUR_ACCESS_TOKEN 为实际的访问令牌
 # curl -X GET http://localhost:3000/auth/profile \
-#   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWN4NGppazIwMDAwN3R5b2VyZHhvaTJ0IiwiZW1haWwiOiJ0ZXN0MkBleGFtcGxlLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMTM2MDkxLCJleHAiOjE3NTIyMjI0OTF9.etmeLXHGL24soQcpmwS8djeMS8jyXyS19M70y2B4da0"
+#   -H "Authorization: Bearer {{token}}"
 
 
 
@@ -83,5 +84,53 @@
 
 
 
-curl -X GET http://localhost:3000/users \
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cI6IkpXVCJ9.eyJzdWIiOiJjbWN2bmdxYTEwMDAwN3Qyc2RxcWozbzZsIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1MjEzNzQwNywiZXhwIjoxNzUyMjIzODA3fQ.3gL-csfgHIHAjwBsZluc63U5zRMPNPKN2KgNCr3MgeM"
+# curl -X GET http://localhost:3000/users \
+#   -H "Authorization: Bearer {{token}}"
+
+
+
+# curl -X POST http://localhost:3000/categories \
+#   -H "Content-Type: application/json" \
+#   -H "Authorization: Bearer {{token}}" \
+#   -d '{
+#     "name": "黑丝",
+#     "description": "黑丝相关",
+#     "color": "#3B8296"
+#   }'
+
+
+# curl -X POST http://localhost:3000/tags \
+#   -H "Content-Type: application/json" \
+#   -H "Authorization: Bearer {{token}}" \
+#   -d '{
+#     "name": "NestJS2",
+#     "description": "NestJS框架相关",
+#     "color": "#E11048"
+#   }'
+
+
+# curl -X GET http://localhost:3000/articles \
+
+
+# curl -X POST http://localhost:3000/articles \
+# -H "Content-Type: application/json" \
+# -H "Authorization: Bearer {{token}}" \
+# -d '{
+#   "title": "NestJS 实战指南",
+#   "content": "这是一篇关于 NestJS 的详细教程...",
+#   "excerpt": "学习如何使用 NestJS 构建企业级应用",
+#   "categoryId": "cmcvngqbt00027t2sdvlsihzh",
+#   "tagIds": ["cmd44bwx300017taszp4nsavq", "cmcvngqc100057t2sf66fvtxu"],
+#   "status": "PUBLISHED"
+# }'
+
+
+# curl -X GET "http://localhost:3000/articles?page=1&limit=10&status=PUBLISHED"
+
+curl -X POST http://localhost:3000/comments \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer {{token}}" \
+  -d '{
+    "content": "这篇文章写得很好3！",
+    "articleId": "cmd45260q00017tn84udc72u6"
+  }'

@@ -69,6 +69,34 @@ async function main() {
     }),
   ]);
 
+  // 创建分类
+  const category = await Promise.all([
+    prisma.category.upsert({
+      where: { slug: 'nestjs' },
+      update: {},
+      create: {
+        name: 'NestJS',
+        slug: 'nestjs',
+        description: 'NestJS框架相关',
+        color: '#E11D48',
+        icon: 'nestjs',
+        sortOrder: 1,
+      },
+    }),
+    prisma.category.upsert({
+      where: { slug: 'typescript' },
+      update: {},
+      create: {
+        name: 'TypeScript',
+        slug: 'typescript',
+        description: 'TypeScript语言相关',
+        color: '#3178C6',
+        icon: 'typescript',
+        sortOrder: 2,
+      },
+    }),
+  ]);
+
   // 创建标签
   const tags = await Promise.all([
     prisma.tag.upsert({
@@ -104,7 +132,7 @@ async function main() {
   ]);
 
   console.log('种子数据创建完成！');
-  console.log({ admin, user, categories, tags });
+  console.log({ admin, user, categories, tags, category });
 }
 
 main()

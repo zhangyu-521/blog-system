@@ -10,6 +10,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ArticlesModule } from './modules/articles/articles.module';
+import { CategoriesModule } from './modules/categories/categories.module';
+import { TagsModule } from './modules/tags/tags.module';
+import { CommentsModule } from './modules/comments/comments.module';
 
 @Module({
   imports: [
@@ -22,6 +25,9 @@ import { ArticlesModule } from './modules/articles/articles.module';
     UsersModule,
     AuthModule,
     ArticlesModule,
+    CategoriesModule,
+    TagsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [
