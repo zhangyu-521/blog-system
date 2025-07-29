@@ -48,24 +48,23 @@ export default () => ({
 
   // 文件上传配置
   upload: {
-    maxFileSize:
-      parseInt(process.env.UPLOAD_MAX_FILE_SIZE, 10) || 5 * 1024 * 1024,
-    allowedMimeTypes: process.env.UPLOAD_ALLOWED_MIME_TYPES?.split(',') || [
-      'image/jpeg',
-      'image/png',
-      'image/gif',
-      'image/webp',
+    path: process.env.UPLOAD_PATH || './uploads',
+    maxSize: parseInt(process.env.UPLOAD_MAX_SIZE) || 10 * 1024 * 1024, // 10MB
+    allowedImageTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+    allowedDocumentTypes: [
+      'application/pdf',
+      'text/plain',
+      'application/msword',
     ],
-    destination: process.env.UPLOAD_DEST || './uploads',
   },
 
   // 邮件配置
-  email: {
-    host: process.env.EMAIL_HOST,
-    port: parseInt(process.env.EMAIL_PORT, 10) || 587,
-    secure: process.env.EMAIL_SECURE === 'true',
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-    from: process.env.EMAIL_FROM,
+  mail: {
+    host: process.env.MAIL_HOST || 'smtp.gmail.com',
+    port: parseInt(process.env.MAIL_PORT) || 587,
+    secure: process.env.MAIL_SECURE === 'true',
+    user: process.env.MAIL_USER,
+    password: process.env.MAIL_PASSWORD,
+    from: process.env.MAIL_FROM || 'noreply@example.com',
   },
 });
